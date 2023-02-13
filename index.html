@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            /* font-family: ; */
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: beige;
+        }
+
+        h1 {
+            font-size: 63px;
+            margin-top: 80px;
+            margin-bottom: 10px;
+            /* border: 2px solid; */
+        }
+
+
+        section {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            align-items: center;
+            justify-content: center;
+            height: 220px;
+            gap: 5px;
+            /* border: 2px solid; */
+            width: 260px;
+        }
+
+        div {
+            height: 70px;
+            width: 80px;
+            font-size: 60px;
+            /* margin: 4px; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: aquamarine;
+            /* text-align: center;
+            /* flex-direction: row; */
+
+        }
+        
+        .glow {
+            animation: glow 0.7s infinite;
+            /* font-family: 'Courier New', Courier, monospace; */
+        }
+
+        @keyframes glow {
+            0% {
+                background-color: aquamarine;
+            }
+
+            50% {
+                background-color: rgb(77, 143, 242);
+            }
+
+            100% {
+                background-color: aquamarine;
+            }
+        }
+
+        p {
+            font-size: 35px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: 600;
+        }
+
+        #restart {
+            height: 40px;
+            padding: 0 7px;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-size: 20px;
+            background-color: aqua;
+            color: rgb(0, 0, 0);
+            border-radius: 15px;
+            font-weight: 600;
+        }
+        #restart:hover{
+            background-color: rgb(159, 242, 242);
+            /* color: white; */
+        }
+        .draw {
+            animation: draw 0.7s infinite;
+            /* font-family: 'Courier New', Courier, monospace; */
+        }
+
+        @keyframes draw {
+            0% {
+                background-color: aquamarine;
+            }
+
+            50% {
+                background-color: rgb(254, 82, 82);
+            }
+
+            100% {
+                background-color: aquamarine;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Tic Tac Toe</h1>
+    <section id="sc">
+        <div id="box1" class="box"></div>
+        <div class="box" id="box2"></div>
+        <div class="box" id="box3"></div>
+        <div class="box" id="box4"></div>
+        <div class="box" id="box5"></div>
+        <div class="box" id="box6"></div>
+        <div class="box" id="box7"></div>
+        <div class="box" id="box8"></div>
+        <div class="box" id="box9"></div>
+    </section>
+    <button id="restart" onclick="window.location.reload()">Restart</button>
+    <p id="text"></p>
+    <script>
+        let one = document.getElementById("box1")
+        let two = document.getElementById("box2")
+        let three = document.getElementById("box3")
+        let four = document.getElementById("box4")
+        let five= document.getElementById("box5")
+        let six = document.getElementById("box6")
+        let seven = document.getElementById("box7")
+        let eight= document.getElementById("box8")
+        let nine = document.getElementById("box9")
+
+        let box1 = document.getElementsByClassName("box");
+        let text = document.getElementById("text")
+
+        let section = document.querySelector("section")
+        let num = 2;
+        // section.classList.add = "glow";
+        section.addEventListener("click", (e) => {
+            // let box = document.getElementById("box")
+            let boxs = e.target;
+            if (boxs.innerHTML === "") {
+
+                if (num % 2 == 0) {
+                    boxs.innerHTML = "X"
+                    num += 1
+                    win()
+                } else {
+                    boxs.innerHTML = "0"
+                    num += 1
+                    win()
+                }
+            } else {
+                console.log("click on empty space")
+            }
+        })
+
+
+        function win() {
+            if (box1[0].innerHTML == "X" && box1[1].innerHTML == "X" && box1[2].innerHTML == "X") {
+                console.log("x is winner")
+                one.classList.add("glow")
+                two.classList.add("glow")
+                three.classList.add("glow")
+
+                text.innerText = "X is the winner"
+                dis();
+
+            } else if (box1[3].innerHTML == "X" && box1[4].innerHTML == "X" && box1[5].innerHTML == "X") {
+                console.log("x is winner")
+                text.innerText = "X is the winner";
+                dis();
+                four.classList.add("glow")
+                five.classList.add("glow")
+                six.classList.add("glow")
+
+            } else if (box1[6].innerHTML == "X" && box1[7].innerHTML == "X" && box1[8].innerHTML == "X") {
+                console.log("x is winner")
+                text.innerText = "X is the winner";
+                dis();
+                seven.classList.add("glow")
+                eight.classList.add("glow")
+                nine.classList.add("glow")
+
+            } else if (box1[0].innerHTML == "X" && box1[3].innerHTML == "X" && box1[6].innerHTML == "X") {
+                console.log("x is winner")
+                text.innerText = "X is the winner";
+                dis();
+                one.classList.add("glow")
+                four.classList.add("glow")
+                seven.classList.add("glow")
+
+            } else if (box1[1].innerHTML == "X" && box1[4].innerHTML == "X" && box1[7].innerHTML == "X") {
+                console.log("x is winner")
+                text.innerText = "X is the winner";
+                dis();
+                two.classList.add("glow")
+                five.classList.add("glow")
+                eight.classList.add("glow")
+
+            } else if (box1[2].innerHTML == "X" && box1[5].innerHTML == "X" && box1[8].innerHTML == "X") {
+                console.log("x is winner")
+                text.innerText = "X is the winner";
+                dis();
+                three.classList.add("glow")
+                six.classList.add("glow")
+                nine.classList.add("glow")
+
+            } else if (box1[0].innerHTML == "X" && box1[4].innerHTML == "X" && box1[8].innerHTML == "X") {
+                console.log("x is winner")
+                text.innerText = "X is the winner";
+                dis();
+                one.classList.add("glow")
+                five.classList.add("glow")
+                nine.classList.add("glow")
+
+            } else if (box1[2].innerHTML == "X" && box1[4].innerHTML == "X" && box1[6].innerHTML == "X") {
+                console.log("x is winner")
+                text.innerText = "X is the winner";
+                dis();
+                three.classList.add("glow")
+                five.classList.add("glow")
+                seven.classList.add("glow")
+
+                //// X winner code
+
+
+            } else if (box1[0].innerHTML == "0" && box1[1].innerHTML == "0" && box1[2].innerHTML == "0") {
+                console.log("x is winner")
+                text.innerText = "0 is the winner";
+                dis();
+                one.classList.add("glow")
+                two.classList.add("glow")
+                three.classList.add("glow")
+
+            } else if (box1[3].innerHTML == "0" && box1[4].innerHTML == "0" && box1[5].innerHTML == "0") {
+                console.log("x is winner")
+                text.innerText = "0 is the winner";
+                dis();
+                four.classList.add("glow")
+                five.classList.add("glow")
+                six.classList.add("glow")
+
+            } else if (box1[6].innerHTML == "0" && box1[7].innerHTML == "0" && box1[8].innerHTML == "0") {
+                console.log("x is winner")
+                text.innerText = "0 is the winner";
+                dis();
+                seven.classList.add("glow")
+                eight.classList.add("glow")
+                nine.classList.add("glow")
+            } else if (box1[0].innerHTML == "0" && box1[3].innerHTML == "0" && box1[6].innerHTML == "0") {
+                console.log("x is winner")
+                text.innerText = "0 is the winner";
+                dis();
+                one.classList.add("glow")
+                four.classList.add("glow")
+                seven.classList.add("glow")
+
+            } else if (box1[1].innerHTML == "0" && box1[4].innerHTML == "0" && box1[7].innerHTML == "0") {
+                console.log("x is winner")
+                text.innerText = "0 is the winner";
+                dis();
+                two.classList.add("glow")
+                five.classList.add("glow")
+                eight.classList.add("glow")
+
+            } else if (box1[2].innerHTML == "0" && box1[5].innerHTML == "0" && box1[8].innerHTML == "0") {
+                console.log("x is winner")
+                text.innerText = "0 is the winner";
+                dis();
+                three.classList.add("glow")
+                six.classList.add("glow")
+                nine.classList.add("glow")
+
+            } else if (box1[0].innerHTML == "0" && box1[4].innerHTML == "0" && box1[8].innerHTML == "0") {
+                console.log("x is winner")
+                text.innerText = "0 is the winner";
+                dis();  
+                one.classList.add("glow")
+                five.classList.add("glow")
+                nine.classList.add("glow")
+
+            } else if (box1[2].innerHTML == "0" && box1[4].innerHTML == "0" && box1[6].innerHTML == "0") {
+                console.log("x is winner")
+                text.innerText = "0 is the winner";
+                //// 0 winner code 
+                dis();
+                three.classList.add("glow")
+                five.classList.add("glow")
+                seven.classList.add("glow")
+            } else {
+                draw()
+            }
+        }
+        function dis() {
+            for (i = 0; i < box1.length; i++) {
+                console.log(box1.length)
+                var items = box1[i].innerText;
+                if (text.innerText.indexOf("winner") > -1) {
+
+                    if (box1[i].innerHTML == "") {
+                        box1[i].innerHTML = "."    
+                    }
+
+                } else {
+                    // items.innerText="."
+                    draw()
+                }
+            }
+        }
+        function draw() {
+            var ex = ""
+            var zero = ""
+            for (let i = 0; i < box1.length; i++) {
+                if (box1[i].innerText == "X") {
+                    ex +=box1[i].innerHTML;
+                } else {
+                    zero += box1[i].innerHTML;
+                }
+                
+            }
+            if (zero == "00000" && ex =="XXXX") {
+                text.innerText="Match Draw"
+                drawani()
+            }else if (zero == "0000" && ex =="XXXXX") {
+                text.innerText="Match Draw"
+                drawani()
+            } 
+        }
+        function drawani() {
+                one.classList.add("draw")
+                two.classList.add("draw")
+                three.classList.add("draw")
+                four.classList.add("draw")
+                five.classList.add("draw")
+                six.classList.add("draw")
+                seven.classList.add("draw")
+                eight.classList.add("draw")
+                nine.classList.add("draw")
+        }
+
+    </script>
+</body>
+
+</html>
