@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Tic-Tac-Toe</title>
     <style>
         * {
             margin: 0;
@@ -18,7 +18,7 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            background-color: beige;
+            background-color: rgb(56, 51, 77);
         }
 
         h1 {
@@ -26,10 +26,12 @@
             margin-top: 80px;
             margin-bottom: 10px;
             /* border: 2px solid; */
+            color: white;
         }
 
 
         section {
+            /* margin-left: 22px; */
             display: grid;
             grid-template-columns: auto auto auto;
             align-items: center;
@@ -37,14 +39,15 @@
             height: 220px;
             gap: 5px;
             /* border: 2px solid; */
-            width: 260px;
+            /* width: 260px; */
         }
 
         div {
-            height: 70px;
-            width: 80px;
+            height: 80px;
+            width: 90px;
             font-size: 60px;
             /* margin: 4px; */
+            border-radius: 5px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -65,7 +68,7 @@
             }
 
             50% {
-                background-color: rgb(77, 143, 242);
+                background-color: rgb(57, 91, 228);
             }
 
             100% {
@@ -74,25 +77,30 @@
         }
 
         p {
-            font-size: 35px;
+            text-align: center;
+            font-size: 40px;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             font-weight: 600;
+            color: whitesmoke;
         }
 
         #restart {
             height: 40px;
             padding: 0 7px;
-            margin-top: 15px;
+            margin-top: 45px;
             margin-bottom: 5px;
+            margin-left: 15px;
             font-size: 20px;
             background-color: aqua;
             color: rgb(0, 0, 0);
-            border-radius: 15px;
+            border: 1px solid;
+            border-radius: 5px;
             font-weight: 600;
+            /* opacity: 0; */
         }
         #restart:hover{
-            background-color: rgb(159, 242, 242);
-            /* color: white; */
+            background-color: rgb(2, 192, 192);
+            /* color: rgb(132, 132, 132); */
         }
         .draw {
             animation: draw 0.7s infinite;
@@ -116,6 +124,7 @@
 </head>
 
 <body>
+    <header>
     <h1>Tic Tac Toe</h1>
     <section id="sc">
         <div id="box1" class="box"></div>
@@ -311,6 +320,7 @@
 
                     if (box1[i].innerHTML == "") {
                         box1[i].innerHTML = "."    
+                        box1[i].style.color="transparent";
                     }
 
                 } else {
@@ -351,6 +361,9 @@
         }
 
     </script>
+    
+
+    </header>
 </body>
 
 </html>
